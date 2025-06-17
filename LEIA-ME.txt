@@ -1,0 +1,30 @@
+Este código python consultar_ceps_viacep.py consulta os CEPS de uma planilha do excel, pesquisa esses CEPs na biblioteca ViaCep, retorna os logradouros e depois cria uma nova planilha no excel com os resultados.
+
+Etapa 1:
+
+-Faça o download do python no site python.org;
+-Na Instalação, certifique-se de selecionar um checkbox de incluir PATH.
+-Abra o prompt de comando nesta pasta do arquivo, e use o comando: pip install pandas requests openpyxl
+
+Etapa 2:
+
+-Certifique-se que a sua planilha de ceps tenha o nome ceps.xmls e a coluna tenha o nome CEPS.
+
+Etapa 3:
+
+-Abra o prompt de comando nesta pasta do arquivo, e use o comando: python ceps.py
+-Aguarde processar a consulta.
+-Será criado um novo arquivo chamado endereço resultados.
+
+Validação do CEP
+Quando consultado um CEP de formato inválido, exemplo: "950100100" (9 dígitos), "95010A10" (alfanumérico), "95010 10" (espaço), o código de retorno da consulta será um 400 (Bad Request). Antes de acessar o webservice, valide o formato do CEP e certifique-se que o mesmo possua {8} dígitos. Exemplo de como validar o formato do CEP em javascript está disponível nos exemplos abaixo.
+
+Quando consultado um CEP de formato válido, porém inexistente, por exemplo: "99999999", o retorno conterá um valor de "erro" igual a "true". Isso significa que o CEP consultado não foi encontrado na base de dados.
+
+===========================================
+
+Créditos:
+Vitor Pereira
+https://github.com/Vtzao
+
+===========================================
