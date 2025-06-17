@@ -1,30 +1,58 @@
-Este código python consultar_ceps_viacep.py consulta os CEPS de uma planilha do excel, pesquisa esses CEPs na biblioteca ViaCep, retorna os logradouros e depois cria uma nova planilha no excel com os resultados.
+Consulta de CEPs em Massa com Python
+Este projeto contém um script Python (consultar_ceps_viacep.py) que automatiza a consulta de múltiplos CEPs a partir de uma planilha Excel. Ele utiliza a API pública do ViaCEP para buscar os dados de endereço e, ao final, salva todos os resultados em uma nova planilha.
 
-Etapa 1:
+✨ Funcionalidades
+Lê uma lista de CEPs de uma planilha Excel (.xlsx).
+Consulta cada CEP na API pública ViaCEP.
+Trata erros de formato e CEPs não encontrados.
+Salva os resultados completos (Logradouro, Bairro, Cidade, UF e Status) em uma nova planilha Excel.
+📋 Pré-requisitos
+Python 3.6 ou superior.
+🚀 Instalação e Configuração
+Siga os passos abaixo para preparar o ambiente e rodar o script.
 
--Faça o download do python no site python.org;
--Na Instalação, certifique-se de selecionar um checkbox de incluir PATH.
--Abra o prompt de comando nesta pasta do arquivo, e use o comando: pip install pandas requests openpyxl
+1. Instale o Python
 
-Etapa 2:
+Faça o download da versão mais recente do Python em python.org.
+Importante: Durante a instalação no Windows, marque a caixa de seleção "Add Python to PATH" ou "Adicionar Python ao PATH".
+2. Instale as Dependências
 
--Certifique-se que a sua planilha de ceps tenha o nome ceps.xmls e a coluna tenha o nome CEPS.
+Com o Python instalado, abra seu terminal (Prompt de Comando, PowerShell ou Terminal) na pasta deste projeto.
+Execute o seguinte comando para instalar as bibliotecas necessárias:
+Bash
 
-Etapa 3:
+pip install pandas requests openpyxl
+3. Prepare a Planilha de Entrada
 
--Abra o prompt de comando nesta pasta do arquivo, e use o comando: python ceps.py
--Aguarde processar a consulta.
--Será criado um novo arquivo chamado endereço resultados.
+Na mesma pasta do script, coloque sua planilha com a lista de CEPs.
+O arquivo deve se chamar ceps.xlsx.
+A coluna que contém os CEPs deve ter o cabeçalho CEPS.
+▶️ Como Executar
+Com tudo configurado, a execução é simples:
 
-Validação do CEP
-Quando consultado um CEP de formato inválido, exemplo: "950100100" (9 dígitos), "95010A10" (alfanumérico), "95010 10" (espaço), o código de retorno da consulta será um 400 (Bad Request). Antes de acessar o webservice, valide o formato do CEP e certifique-se que o mesmo possua {8} dígitos. Exemplo de como validar o formato do CEP em javascript está disponível nos exemplos abaixo.
+Abra seu terminal na pasta do projeto.
+Execute o script com o seguinte comando:
+Bash
 
-Quando consultado um CEP de formato válido, porém inexistente, por exemplo: "99999999", o retorno conterá um valor de "erro" igual a "true". Isso significa que o CEP consultado não foi encontrado na base de dados.
+python consultar_ceps_viacep.py
+Aguarde o processo ser concluído. O script exibirá o progresso no terminal.
+📄 O Resultado
+Ao final da execução, um novo arquivo chamado enderecos_resultados.xlsx será criado na mesma pasta. Ele conterá as seguintes colunas:
 
-===========================================
+CEP_Consultado
+Logradouro
+Bairro
+Cidade
+UF
+Status (informando "Sucesso", "CEP não encontrado" ou outro erro)
+⚠️ Tratamento de Erros
+O script foi projetado para lidar com os erros mais comuns da API ViaCEP:
 
-Créditos:
+CEP com Formato Inválido: CEPs com mais ou menos de 8 dígitos, ou que contenham letras e espaços, serão identificados pelo script e marcados com o status "Formato de CEP inválido", sem fazer uma chamada desnecessária à API.
+CEP Válido, mas Inexistente: Se um CEP tiver 8 dígitos mas não for encontrado na base de dados do ViaCEP (ex: "99999999"), o script receberá a confirmação da API e marcará o status como "CEP não encontrado".
+✒️ Créditos
+Este projeto foi desenvolvido por:
+
 Vitor Pereira
-https://github.com/Vtzao
 
-===========================================
+GitHub: https://github.com/Vtzao
