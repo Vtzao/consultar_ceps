@@ -2,6 +2,7 @@ Consulta de CEPs em Massa com Python
 Este projeto contém um script Python (consultar_ceps_viacep.py) que automatiza a consulta de múltiplos CEPs a partir de uma planilha Excel. Ele utiliza a API pública do ViaCEP para buscar os dados de endereço e, ao final, salva todos os resultados em uma nova planilha.
 
 ✨ Funcionalidades
+
 Lê uma lista de CEPs de uma planilha Excel (.xlsx).
 Consulta cada CEP na API pública ViaCEP.
 Trata erros de formato e CEPs não encontrados.
